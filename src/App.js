@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Jumbotron from './components/Jumbotron';
 import Footer from './components/Footer';
 import ImageCard from './components/ImageCard';
+import './components/ImageCard.css';
 
 class App extends Component {
   render() {
@@ -21,7 +22,6 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <Jumbotron/>
-        <ImageCard/>
         <ImageCard/>
         <Footer/>
       </div>
