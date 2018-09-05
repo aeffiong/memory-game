@@ -17,12 +17,11 @@ const images = [
     { src: 'http://placehold.it/200x200/76BD212', alt: 'Your description here 12' }
   ];
 const ImageCard = props => (
-        <div className="container">
             <div className="game-images">
                 <ul className="game-image-list">
                     {images.map(function(imageProps) {
                         return (
-                            <div children="card" key={ imageProps.src}>
+                            <div className="card" key={ imageProps.src}>
                                 <img src={ imageProps.src} alt={ imageProps.alt} />
                             </div>
                         )
@@ -30,7 +29,6 @@ const ImageCard = props => (
                 </ul>
 
             </div>
-        </div>
 );
 
 export default ImageCard;
