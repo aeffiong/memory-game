@@ -7,7 +7,7 @@
 nav {
     background-color: teal;
 }
-.navbar-brand {
+a {
     font-size: 30px;
     color: white;
 }

@@ -95,7 +95,7 @@ class App extends Component {
     data: originalData,
   };
 
-resetGame = () => {
+handleReset = () => {
   this.setState (
     {
       currentScore: 0,
@@ -184,3 +184,97 @@ export default App;
       </div>
   )
 })}
+
+
+
+
+// the retry
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array
+}
+
+class App extends Component {
+  state = {
+    originalData,
+    currentScore: 0,
+    topScore: 0,
+    clicked: []
+  };
+
+  handleClick = id => {
+    if (this.state.clicked.indexOf(id) === -1) {
+      this.handleIncrement();
+      this.setState({ clicked: this.state.clicked.concat(id) });
+    } else {
+      this.handleReset();
+    }
+  };
+  handleIncrement = () => {
+    const newScore = this.state.currentScore + 1;
+    this.setState({
+      currentScore: newScore,
+      rightWrong: ""
+    });
+    if (newScore >= this.state.topScore) {
+      this.setState({ topScore: newScore });
+    }
+    else if (newScore === 12) {
+      this.setState({ rightWrong: "You win!" });
+    }
+    this.handleShuffle();
+  };
+
+  handleReset = () => {
+    this.setState({
+      currentScore: 0,
+      topScore: this.state.topScore,
+      rightWrong: "Oops!",
+      clicked: []
+    });
+    this.handleShuffle();
+  };
+
+  handleShuffle = () => {
+    let shuffledArray = shuffleArray(originalData);
+    this.setState({ originalData: shuffledArray });
+  };
+  
+  render() {
+    return (
+      <div className="App">
+        <NavBar/>
+        <Jumbotron/>
+        <Container>
+            {this.state.originalData.map(pic => (
+              <ImageCard
+                id={pic.id}
+                key={pic.id}
+                src={pic.src}
+                alt={pic.alt}
+              />
+            ))}
+        </Container>
+        <Footer/>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+// retry card
+const ImageCard = props => (
+  <div className="card"
+  value={props.id}
+  onClick={props.handleClick}>
+      <div className="img-container">    
+          <img alt={props.alt} src={props.src} />
+      </div>
+  </div>
+);

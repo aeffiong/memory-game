@@ -7,16 +7,17 @@ import "./NavBar.css";
 
 const NavBar = props => (
     <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="#">
-            Clicky Game
-        </a> 
+    <a href="/clicky-game/">Clicky Game</a>
+       <ul>    
         <span className="navbar-text">
             Click an image to begin!
         </span>
-        
+        </ul>
+        <ul>
         <span className="navbar-score">
-             Score: {props.currentScore} | Top Score: {props.topScore}
+             Score: {props.score} | Top Score: {props.topScore}
         </span>
+        </ul>
     
     </nav>
 );
