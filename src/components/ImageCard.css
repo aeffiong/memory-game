@@ -1,4 +1,13 @@
+* {
+    box-sizing: border-box;
+}
 .card {
     width: 200px;
     height: 200px;
+    margin: 20px;
 };
+
+img {
+    width: 200px;
+    height: 200px;
+}

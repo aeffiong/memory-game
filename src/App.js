@@ -11,75 +11,75 @@ import Container from './components/Container';
 import Row from './components/Row';
 import Col from './components/Col';
 
-var originalData = [{
-    src: 'https://www.pexels.com/photo/assorted-sliced-fruits-1128678/',
+const originalData = [{
+    src: 'https://images.pexels.com/photos/1128678/pexels-photo-1128678.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 1',
     clicked: false,
     id: 0
 
   },
   {
-    src: 'https://www.pexels.com/photo/assorted-sliced-fruits-in-white-ceramic-bowl-1092730/',
+    src: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 2',
     clicked: false,
     id: 1
   },
   {
-    src: 'http://placehold.it/200x200/76BD23',
+    src: 'https://images.pexels.com/photos/1161682/pexels-photo-1161682.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 3',
     clicked: false,
     id: 2
   },
   {
-    src: 'http://placehold.it/200x200/76BD24',
+    src: 'https://images.pexels.com/photos/357737/pexels-photo-357737.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 4',
     clicked: false,
     id: 3
   },
   {
-    src: 'http://placehold.it/200x200/76BD25',
+    src: 'https://images.pexels.com/photos/209564/pexels-photo-209564.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 5',
     clicked: false,
     id: 4
   },
   {
-    src: 'http://placehold.it/200x200/76BD26',
+    src: 'https://images.pexels.com/photos/793772/pexels-photo-793772.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 6',
     clicked: false,
     id: 5
   },
   {
-    src: 'http://placehold.it/200x200/76BD27',
+    src: 'https://images.pexels.com/photos/1152237/pexels-photo-1152237.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 7',
     clicked: false,
     id: 6
   },
   {
-    src: 'http://placehold.it/200x200/76BD28',
+    src: 'https://images.pexels.com/photos/979310/pexels-photo-979310.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 8',
     clicked: false,
     id: 7
   },
   {
-    src: 'http://placehold.it/200x200/76BD29',
+    src: 'https://images.pexels.com/photos/1132040/pexels-photo-1132040.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 9',
     clicked: false,
     id: 8
   },
   {
-    src: 'http://placehold.it/200x200/76BD210',
+    src: 'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 10',
     clicked: false,
     id: 9
   },
   {
-    src: 'http://placehold.it/200x200/76BD211',
+    src: 'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 11',
     clicked: false,
     id: 10
   },
   {
-    src: 'http://placehold.it/200x200/76BD212',
+    src: 'https://images.pexels.com/photos/247685/pexels-photo-247685.png?auto=compress&cs=tinysrgb&h=200&w=200',
     alt: 'Your description here 12',
     clicked: false,
     id: 11
@@ -94,14 +94,16 @@ class App extends Component {
   
 
   handleClick = (event) => {
-    var data = this.state.data;
-    var id = event.target.id
+    const data = this.state.data;
+    const id = event.target.id
     ///filteres thourgh data and got a new array of the filtered data
-    var newData = findDataAndFormatArray.call(this, data)
+    const newData = findDataAndFormatArray.call(this, data);
+    console.log("New Data");
     console.log(newData);
 
     //randomize our array (fisher yates rando algo)
-    var shuffledData = shuffleArray(newData)
+    const shuffledData = shuffleArray(newData)
+    console.log("Shuffled Data")
     console.log(shuffledData);
     
     //tell the screen to update
@@ -111,6 +113,7 @@ class App extends Component {
 
     //FUNCTIONS:::::::::::::::::
     function findDataAndFormatArray(data) {
+      console.log("Original Data")
       console.log(originalData)
       var newData = [];
       for (let i = 0; i < data.length; i++) {
@@ -118,7 +121,7 @@ class App extends Component {
           if (data[i].clicked == true) {
             console.log("ouch you already clicked this");
             this.setState({
-              data: originalData
+              data: newData, clicked: false
             });
           }
           data[i].clicked = true
@@ -149,11 +152,9 @@ class App extends Component {
         <NavBar/>
         <Jumbotron/>
         <Container>
-          <Row>
             <Col size="md-8">
               <ImageCard handleClick={this.handleClick} data={this.state.data}/>
             </Col>
-          </Row>
         </Container>
         <Footer/>
       </div>
