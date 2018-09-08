@@ -2,12 +2,13 @@
     box-sizing: border-box;
 }
 .card {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 20px;
+    background-color: darkgrey;
 };
 
 img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }

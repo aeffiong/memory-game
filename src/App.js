@@ -7,79 +7,80 @@ import Jumbotron from './components/Jumbotron';
 import Footer from './components/Footer';
 import ImageCard from './components/ImageCard';
 import './components/ImageCard.css';
+import './components/Jumbotron.css';
 import Container from './components/Container';
 import Row from './components/Row';
 import Col from './components/Col';
 
 const originalData = [{
-    src: 'https://images.pexels.com/photos/1128678/pexels-photo-1128678.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/1128678/pexels-photo-1128678.jpeg?h=200&w=150',
     alt: 'Your description here 1',
     clicked: false,
     id: 0
 
   },
   {
-    src: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&h=200&w=150',
     alt: 'Your description here 2',
     clicked: false,
     id: 1
   },
   {
-    src: 'https://images.pexels.com/photos/1161682/pexels-photo-1161682.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/1161682/pexels-photo-1161682.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 3',
     clicked: false,
     id: 2
   },
   {
-    src: 'https://images.pexels.com/photos/357737/pexels-photo-357737.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/357737/pexels-photo-357737.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 4',
     clicked: false,
     id: 3
   },
   {
-    src: 'https://images.pexels.com/photos/209564/pexels-photo-209564.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/209564/pexels-photo-209564.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 5',
     clicked: false,
     id: 4
   },
   {
-    src: 'https://images.pexels.com/photos/793772/pexels-photo-793772.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/793772/pexels-photo-793772.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 6',
     clicked: false,
     id: 5
   },
   {
-    src: 'https://images.pexels.com/photos/1152237/pexels-photo-1152237.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/1152237/pexels-photo-1152237.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 7',
     clicked: false,
     id: 6
   },
   {
-    src: 'https://images.pexels.com/photos/979310/pexels-photo-979310.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/979310/pexels-photo-979310.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 8',
     clicked: false,
     id: 7
   },
   {
-    src: 'https://images.pexels.com/photos/1132040/pexels-photo-1132040.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/1132040/pexels-photo-1132040.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 9',
     clicked: false,
     id: 8
   },
   {
-    src: 'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 10',
     clicked: false,
     id: 9
   },
   {
-    src: 'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 11',
     clicked: false,
     id: 10
   },
   {
-    src: 'https://images.pexels.com/photos/247685/pexels-photo-247685.png?auto=compress&cs=tinysrgb&h=200&w=200',
+    src: 'https://images.pexels.com/photos/247685/pexels-photo-247685.png?auto=compress&cs=tinysrgb&h=100&w=100',
     alt: 'Your description here 12',
     clicked: false,
     id: 11
@@ -88,9 +89,14 @@ const originalData = [{
 
 
 class App extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+  this.state = {
+    currentScore: 0,
+    topScore: 0,
     data: originalData
-  }
+  };
+}
   
 
   handleClick = (event) => {
@@ -121,8 +127,10 @@ class App extends Component {
           if (data[i].clicked == true) {
             console.log("ouch you already clicked this");
             this.setState({
-              data: newData, clicked: false
+              newData: []
             });
+            console.log("new data after clicked twice");
+            console.log(newData);
           }
           data[i].clicked = true
           console.log(data[i]);
