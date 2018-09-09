@@ -1,12 +1,10 @@
-nav {
-    background-color: teal;
+.bg-light {
+    background-color: teal !important;
+    color: white;
+    font-size: 20px;
 }
 a {
     font-size: 30px;
-    color: white;
-}
-span {
-    font-size: 20px; 
     color: white;
 }
 .navbar-brand {

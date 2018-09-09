@@ -105,7 +105,6 @@ class App extends Component {
    images,
    idNums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
    score: 0,
-   topScore: 0
  }
 
  shuffleImages = id => {
@@ -121,9 +120,15 @@ class App extends Component {
       this.setState({ idNums });
       const score = this.state.score + 1;
       this.setState({ score });
+      console.log(score);
+      if(score === 12) {
+        alert("You win!");
+        this.setState({ score: 0, idNums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] });
+      }
     }
   }
   else {
+    alert("You lose!");
     this.setState({ score: 0, idNums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] });
   }
 
@@ -140,7 +145,6 @@ class App extends Component {
        <Jumbotron/>
       <Container>
         <Row>
-          <Col size="md-8">
           {this.state.images.map(image => (
             <ImageCard
             shuffleImages={this.shuffleImages}
@@ -151,7 +155,6 @@ class App extends Component {
             alt={image.alt}
           />
           ))}
-          </Col>
         </Row>
       </Container>
        <Footer/>

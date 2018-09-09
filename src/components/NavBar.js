@@ -8,12 +8,16 @@ import "./NavBar.css";
 const NavBar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <a className="navbar-brand" href={"/"}>Clicky Game!</a>
+    <div>
   
-  
-    <span className="navbar-text justify-content-center">
-      Score: {props.score} | TopScore: {props.topScore}
-    </span>
-  
+    <ul className="navbar-nav">
+        <li className="nav-item">
+            <div className="score">
+                Current Score: {props.score}
+            </div>
+        </li>
+    </ul>
+  </div>
 </nav>
 );
 
