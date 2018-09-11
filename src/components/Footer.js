@@ -1,5 +1,6 @@
-import React from "react";
-import "./NavBar.css";
+import React from 'react';
+import './NavBar.css';
+
 // footer
 const Footer = props => (
     <footer className="page-footer">
